@@ -1,9 +1,7 @@
-# JAM-CF-Worker-Template
-Process JAM - Worker Template
+# JAM-KIS6-Worker
+Process JAM - This worker updates a Shopify variant on the targeted storefront.
 
 [![Deploy](https://github.com/Process-Creative/JAM-CF-Worker-Template/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/Process-Creative/JAM-CF-Worker-Template/actions/workflows/deploy.yml)
-
-This worker acts as a starter template for other JAM workers.
 
 ## Development
 1. Clone the repo
