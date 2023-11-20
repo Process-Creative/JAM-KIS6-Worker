@@ -1,0 +1,8 @@
+name = "jam-temp"
+main = "src/index.js"
+compatibility_date = "2023-10-25"
+
+[vars]
+JAM_WORKER = '{"username": "JAM_TEMP", "password": "XZY123456+32"}' # SELF - Stored creds to send request to other workers
+JAM_LOGGER = '{"apiUrl":"https://jam-l9cb.pro-cess.cc","username":"JAM_PT2J","password":"XZY123456+32"}' #JAM-L9CB credentials - Required to send logs
+JAM_EXAMPLE_USER = '{"pid":"JAM_EXAMPLE_USER","password":"12345","activeState":true,"environment":"production","shopify":{"url":"ab-checkout-ui.myshopify.com","accessToken":"shopify_XYZ","apiVersion":"2023-07"}}'

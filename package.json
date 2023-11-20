@@ -1,0 +1,22 @@
+{
+  "name": "jam-temp",
+  "version": "0.0.0",
+  "description": "Process JAM - Worker template",
+  "private": true,
+  "scripts": {
+    "deploy": "wrangler deploy --keep-vars",
+    "start": "wrangler dev",
+    "log": "wrangler tail jam-l9cb",
+    "fix-prettier": "prettier --write ./src/**/*.js",
+    "fix-eslint": "eslint --fix ./src/**/*.js",
+    "fix-all": "npm run fix-prettier && npm run fix-eslint"
+  },
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.28.1",
+    "eslint-plugin-react": "^7.33.2",
+    "prettier": "^3.0.3",
+    "wrangler": "^3.0.0"
+  }
+}
