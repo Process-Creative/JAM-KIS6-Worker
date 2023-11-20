@@ -1,18 +1,20 @@
+export const DEFAULT_API_VERSION = "2023-10";
+
 export const logBody = {
-	jamId: "JAM_TEMP",
-	pid: "JAM_TEMP",
+	jamId: "JAM_KIS6",
+	pid: "JAM_KIS6",
 	message: "",
 	nested: {
 		reporter: {
-			jamId: "JAM_TEMP",
-			pid: "JAM_TEMP"
+			jamId: "JAM_KIS6",
+			pid: "JAM_KIS6"
 		},
 		payload: {
 			emoji: "",
-			flag: "Testing TEMP logs",
-			topic: "Testing TEMP logs",
-			brief: "Testing TEMP logs",
-			context: "Testing TEMP logs"
+			flag: "Testing JAM_KIS6 logs",
+			topic: "Testing JAM_KIS6 logs",
+			brief: "Testing JAM_KIS6 logs",
+			context: "Testing JAM_KIS6 logs"
 		}
 	}
 };

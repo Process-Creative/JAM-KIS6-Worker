@@ -1,4 +1,4 @@
-import { errorState, logBody } from "./constants";
+import {  DEFAULT_API_VERSION, errorState, logBody } from "./constants";
 
 /**
  * Check if the request contains basic auth header
@@ -71,4 +71,16 @@ export const handleError = async (credentials, status, message) => {
 	const errorMessage = message || errorState[errorCode];
 	await sendLogs(credentials, errorCode, errorMessage);
 	return new Response(errorMessage, { status: errorCode });
+};
+
+/**
+ * Generate Shopify API URL
+ * @param {string} shopName
+ * @param {string} apiVersion
+ * @returns {string} Shopify API URL
+ */
+export const generateApiUrl = (shopName, apiVersion = DEFAULT_API_VERSION) => {
+	// Handle blank apiVersion overriding default
+	const version = apiVersion ? apiVersion : DEFAULT_API_VERSION;
+	return `https://${shopName}/admin/api/${version}/graphql.json`;
 };
