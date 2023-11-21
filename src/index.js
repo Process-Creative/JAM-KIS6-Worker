@@ -43,7 +43,7 @@ const handleRequest = async (request, env, context) => {
 	if (!requestBody) return handleError(loggerCredentials, 400, "Invalid request body");
 	const getShopifyProducts = new ProductProvider(clientCredentials, loggerCredentials);
 
-	return await getShopifyProducts.handleAddVariant(requestBody);
+	return await getShopifyProducts.handleUpdateVariant(requestBody);
 };
 
 export default {

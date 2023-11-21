@@ -29,9 +29,8 @@ export class ProductProvider {
 		`;
 	};
 
-	handleAddVariant = async (queryInput) => {
+	handleUpdateVariant = async (queryInput) => {
 		const shopifyResponse = await this.updateVariant(queryInput);
-
 		if (!shopifyResponse) return handleError(this.loggerCredentials, 500, "Could not create variant");
 
 		if (shopifyResponse?.errors) {
