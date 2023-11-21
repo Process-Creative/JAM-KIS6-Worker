@@ -1,12 +1,12 @@
 {
-  "name": "jam-temp",
+  "name": "jam-kis6",
   "version": "0.0.0",
   "description": "Process JAM - Worker template",
   "private": true,
   "scripts": {
     "deploy": "wrangler deploy --keep-vars",
     "start": "wrangler dev",
-    "log": "wrangler tail jam-l9cb",
+    "log": "wrangler tail jam-kis6",
     "fix-prettier": "prettier --write ./src/**/*.js",
     "fix-eslint": "eslint --fix ./src/**/*.js",
     "fix-all": "npm run fix-prettier && npm run fix-eslint"

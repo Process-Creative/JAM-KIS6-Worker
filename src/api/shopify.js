@@ -48,12 +48,13 @@ export class ProductProvider {
 	 * @returns {Object} - returns object containing product id
 	 */
 	updateVariant = async (queryInput) => {
-		//{
-		//	"id": "gid://shopify/ProductVariant/47213471498534",
-		//	"barcode": "1234_example",
-		//	"compareAtPrice": "1000"
-		//}
-		if (!queryInput?.productId) return;
+		// Example queryInput to send as request body
+		// {
+		// 	"id": "gid://shopify/ProductVariant/47213471498534",
+		// 	"barcode": "1234_example",
+		// 	"compareAtPrice": "1000"
+		// }
+		if (!queryInput?.id) return;
 
 		const query = this.generateVariantQuery();
 		const requestBody = {

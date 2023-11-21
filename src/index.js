@@ -27,9 +27,8 @@ const handleRequest = async (request, env, context) => {
 	// Verify worker is authorized to fetch user credentials
 	const requestAuthHeader = request.headers.get("Authorization");
 	const isVerifiedRequest = await verifyRequestCredentials(env["JAM_7PR4_URL"], requestAuthHeader, loggerCredentials);
-
 	if (!isVerifiedRequest) return handleError(loggerCredentials, 401);
-
+	
 	const requestCredentials = request.headers.get("X-Jam-Auth");
 	const clientCredentials = await getShopifyCredentials(workerCredentials, requestCredentials, env["JAM_PT2J_URL"]);
 	if (!clientCredentials) return handleError(loggerCredentials, 401);
