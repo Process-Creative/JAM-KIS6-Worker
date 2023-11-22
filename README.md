@@ -1,9 +1,22 @@
-# JAM-CF-Worker-Template
-Process JAM - Worker Template
+# JAM-KIS6-Worker
+Process JAM - This worker updates a Shopify variant on the targeted storefront.
 
-[![Deploy](https://github.com/Process-Creative/JAM-CF-Worker-Template/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/Process-Creative/JAM-CF-Worker-Template/actions/workflows/deploy.yml)
+[![Deploy](https://github.com/Process-Creative/JAM-KIS6-Worker/actions/workflows/deploy.yml/badge.svg?branch=main)](https://github.com/Process-Creative/JAM-KIS6-Worker/actions/workflows/deploy.yml)
 
-This worker acts as a starter template for other JAM workers.
+## Usage
+### Example request
+Send a `POST` request to `https://jam-kis6.pro-cess.cc`
+with an `Authotization` header with Basic auth using a valid Worker username and password (From password vault)
+and an `X-Jam-Auth` header with Basic auth using a valid Client/Store username and password (From password vault)
+
+Request body should be in the format:
+```
+{
+    "id": "gid://shopify/ProductVariant/<VARIANT_ID>",
+    "barcode": "1234_example",
+    "compareAtPrice": "1000"
+}
+```
 
 ## Development
 1. Clone the repo
