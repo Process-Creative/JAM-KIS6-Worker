@@ -1,4 +1,4 @@
-import { generateApiUrl, handleError, sendLogs } from "../helpers";
+import { generateApiUrl, handleError, sendLogs, formatUtcDate } from "../helpers";
 
 export class ProductProvider {
 	constructor(clientCredentials, loggerCredentials) {
@@ -70,8 +70,7 @@ export class ProductProvider {
 
 		const currentDate = new Date();
 
-		// Format the date manually
-		const formattedDate = `${currentDate.getUTCHours()}:${currentDate.getUTCMinutes()}:${currentDate.getUTCSeconds()} ${currentDate.getUTCDate()}-${currentDate.getUTCMonth() + 1}-${currentDate.getUTCFullYear()} (UTC)`;
+		const formattedDate = formatUtcDate(currentDate);
 
 		const metafields = [
 			{
