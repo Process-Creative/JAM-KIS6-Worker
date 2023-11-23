@@ -84,3 +84,12 @@ export const generateApiUrl = (shopName, apiVersion = DEFAULT_API_VERSION) => {
 	const version = apiVersion ? apiVersion : DEFAULT_API_VERSION;
 	return `https://${shopName}/admin/api/${version}/graphql.json`;
 };
+
+/**
+ * Format the current UTC date into a string
+ * @param {string} currentDate
+ * @returns {string} - formatted date string
+ */
+export const formatUtcDate = (currentDate) => {
+	return `${currentDate.getUTCHours().toString().padStart(2, "0")}:${currentDate.getUTCMinutes().toString().padStart(2, "0")}:${currentDate.getUTCSeconds().toString().padStart(2, "0")} ${currentDate.getUTCDate()}-${(currentDate.getUTCMonth() + 1).toString().padStart(2, "0")}-${currentDate.getUTCFullYear()} (UTC)`;
+};

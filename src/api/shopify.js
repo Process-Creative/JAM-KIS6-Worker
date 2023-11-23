@@ -1,4 +1,4 @@
-import { generateApiUrl, handleError, sendLogs } from "../helpers";
+import { generateApiUrl, handleError, sendLogs, formatUtcDate } from "../helpers";
 
 export class ProductProvider {
 	constructor(clientCredentials, loggerCredentials) {
@@ -15,14 +15,25 @@ export class ProductProvider {
 	 */
 	generateVariantQuery = () => {
 		return `
-			mutation productVariantUpdate($input: ProductVariantInput!) {
+			mutation productVariantUpdate($input: ProductVariantInput!, $metafields: [MetafieldsSetInput!]!) {
 				productVariantUpdate(input: $input) {
 					productVariant {
 						barcode
 					}
+				}
+
+				metafieldsSet(metafields: $metafields) {
+					metafields {
+						key
+						namespace
+						value
+						createdAt
+						updatedAt
+					}
 					userErrors {
 						field
 						message
+						code
 					}
 				}
 			}
@@ -56,10 +67,26 @@ export class ProductProvider {
 		if (!queryInput?.id) return;
 
 		const query = this.generateVariantQuery();
+
+		const currentDate = new Date();
+
+		const formattedDate = formatUtcDate(currentDate);
+
+		const metafields = [
+			{
+				namespace: "jam_data",
+				key: "last_updated",
+				ownerId: `${queryInput.id}`,
+				value: formattedDate,
+				type: "single_line_text_field"
+			}
+		];
+
 		const requestBody = {
 			query,
 			variables: {
-				input: queryInput
+				input: queryInput,
+				metafields
 			}
 		};
 
