@@ -15,14 +15,25 @@ export class ProductProvider {
 	 */
 	generateVariantQuery = () => {
 		return `
-			mutation productVariantUpdate($input: ProductVariantInput!) {
+			mutation productVariantUpdate($input: ProductVariantInput!, $metafields: [MetafieldsSetInput!]!) {
 				productVariantUpdate(input: $input) {
 					productVariant {
 						barcode
 					}
+				}
+
+				metafieldsSet(metafields: $metafields) {
+					metafields {
+						key
+						namespace
+						value
+						createdAt
+						updatedAt
+					}
 					userErrors {
 						field
 						message
+						code
 					}
 				}
 			}
@@ -56,10 +67,27 @@ export class ProductProvider {
 		if (!queryInput?.id) return;
 
 		const query = this.generateVariantQuery();
+
+		const currentDate = new Date();
+
+		// Format the date manually
+		const formattedDate = `${currentDate.getUTCHours()}:${currentDate.getUTCMinutes()}:${currentDate.getUTCSeconds()} ${currentDate.getUTCDate()}-${currentDate.getUTCMonth() + 1}-${currentDate.getUTCFullYear()} (UTC)`;
+
+		const metafields = [
+			{
+				namespace: "jam_data",
+				key: "last_updated",
+				ownerId: `${queryInput.id}`,
+				value: formattedDate,
+				type: "single_line_text_field"
+			}
+		];
+
 		const requestBody = {
 			query,
 			variables: {
-				input: queryInput
+				input: queryInput,
+				metafields
 			}
 		};
 
